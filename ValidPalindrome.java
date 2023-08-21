@@ -18,31 +18,41 @@ public class ValidPalindrome {
 	}
 	
 	public static boolean isPalindrome(String s) {
-        
+			
+		if(s.isEmpty()) {
+			return true;
+		}
 		
-		char[]ch=s.toCharArray();
-		String b="";
+		char [] ch = s.toCharArray();
+		String str = "";
 		
 		for(int i=0; i<ch.length; i++) {
 			
 			if(ch[i]>='a' && ch[i]<='z') {
-				b=b+ch[i];
+				str = str + ch[i];
 			}
 		}
+        
+		char [] chStr =str.toCharArray();
 		
-		String c="";
+		int start = 0;
+		int end = str.length()-1;
 		
-		for(int i=ch.length-1; i>=0; i--) {
+		while(start<=end) {
 			
-			if(ch[i]>='a' && ch[i]<='z') {
-				c=c+ch[i];
+			char ch1 = chStr[start];
+			char ch2 = chStr[end];
+		
+			if(ch1!=ch2)
+				return false;
+			else {
+				start++;
+				end--;
 			}
+		
 		}
 		
-		if(b.equals(c)) {
-			return true;
-		}
-		else
-			return false;
+		return true;
+		
     }
 }
